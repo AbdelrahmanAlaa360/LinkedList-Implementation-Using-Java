@@ -11,14 +11,30 @@ public class LinkedList {
         count = 0;
     }
 
+    /**
+     * This method is use to check if the lined list is empty or not
+     *
+     * @return boolean
+     */
     public boolean IsEmpty() {
         return count == 0;
     }
 
+    /**
+     * This method is use to get the size of linked list
+     *
+     * @return integer
+     */
     public int getSize() {
         return count;
     }
 
+    /**
+     * this method is used to add element in the linked list
+     * Add data at the end of linked list
+     *
+     * @param data
+     */
     public void insertAtEnd (int data) {
         Node node = new Node(data);
         if (head == null) {
@@ -34,6 +50,12 @@ public class LinkedList {
         count++;
     }
 
+    /**
+     * this method is used to add element in the linked list
+     * Add data at the start of linked list
+     *
+     * @param data
+     */
     public void insertAtStart(int data) {
         Node node = new Node();
         node.data = data;
@@ -42,6 +64,13 @@ public class LinkedList {
         count++;
     }
 
+    /**
+     * this method is used to add element in the linked list
+     * Add data at specific index at the linked list
+     *
+     * @param index
+     * @param data
+     */
     public void insertAtNthPosition(int index, int data) {
         if (head == null) {
             insertAtStart(data);
@@ -68,6 +97,12 @@ public class LinkedList {
         }
     }
 
+    /**
+     * this method is used to delete element in the linked list
+     * delete element at specific index at the linked list
+     *
+     * @param index
+     */
     public void DeleteAt(int index) {
         if (index == 0) {
             head = head.next;
@@ -89,7 +124,19 @@ public class LinkedList {
         count--;
     }
 
-    public int get(int index) {
+
+    /**
+     * This method is use to search in the linked list
+     * Return a specific data in a specific index in the linked list
+     *
+     * @param index
+     * @return integer
+     */
+    public int getElement(int index) {
+        if(index >= count){
+            System.out.println("Index out of bound");
+            return 0;
+        }
         Node temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
@@ -97,13 +144,19 @@ public class LinkedList {
         return temp.data;
     }
 
-    public void printList() {
+
+    /**
+     * This method is used to print the linked list
+     */
+    public String printList() {
         Node currNode = head;
-        System.out.print("Linkedlist : ");
+        String stringList = "";
+        stringList += "LinkedList : ";
         while (currNode != null) {
-            System.out.print(currNode.data + " ");
+            stringList += currNode.data + " ";
             currNode = currNode.next;
         }
+        return stringList;
     }
 
 }

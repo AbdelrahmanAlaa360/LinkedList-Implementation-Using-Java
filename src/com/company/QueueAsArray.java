@@ -17,7 +17,6 @@ public class QueueAsArray {
      *
      * @return boolean
      */
-
     public boolean Isfull() {
         return (rear == size - 1 && front == 0);
     }
@@ -27,7 +26,6 @@ public class QueueAsArray {
      *
      * @return
      */
-
     public boolean IsEmpty() {
         return (front == -1);
     }
@@ -38,7 +36,6 @@ public class QueueAsArray {
      *
      * @param newItem
      */
-
     public void Enqueue(int newItem) {
         if (Isfull()) {
             //throw new ArrayStoreException("Array is Full");

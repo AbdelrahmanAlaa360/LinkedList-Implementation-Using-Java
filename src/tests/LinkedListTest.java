@@ -205,7 +205,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void testInsertOrder() {
+    public void testInsertOrderAtEnd() {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
@@ -217,6 +217,134 @@ public class LinkedListTest {
         }
     }
 
+    @Test
+    public void testInsertAtStart() {
+        LinkedList list = new LinkedList();
+        list.insertAtStart(5);
+        list.insertAtStart(10);
+        Node curr = list.head;
+        int[] expectedResult = new int[]{10, 5};
+        for (int i = 0; i < list.getSize(); i++) {
+            assertEquals(expectedResult[i], curr.data);
+            curr = curr.next;
+        }
+    }
+
+    @Test
+    public void testInsertAtNthPosition() {
+        LinkedList list = new LinkedList();
+        list.insertAtNthPosition(0, 10);
+        list.insertAtNthPosition(1, 20);
+        list.insertAtNthPosition(2, 40);
+        list.insertAtNthPosition(2, 30);
+        Node curr = list.head;
+        int[] expectedResult = new int[]{10, 20, 30, 40};
+        for (int i = 0; i < list.getSize(); i++) {
+            assertEquals(expectedResult[i], curr.data);
+            curr = curr.next;
+        }
+    }
+
+    @Test
+    public void testDeleteAtOrder() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(20);
+        list.insertAtEnd(30);
+        list.DeleteAt(1);
+        list.DeleteAt(0);
+        Node curr = list.head;
+        int[] expectedResult = new int[]{30};
+        for (int i = 0; i < list.getSize(); i++) {
+            assertEquals(expectedResult[i], curr.data);
+            curr = curr.next;
+        }
+    }
+
+    @Test
+    public void testGetElement() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(20);
+        list.insertAtEnd(30);
+        int actual = list.getElement(1);
+        assertEquals(20, actual);
+    }
+
+    @Test
+    public void testGetElementOutOfBound() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(20);
+        int actual = list.getElement(5);
+        assertEquals(0, actual);
+    }
+
+    @Test
+    public void testPrintingOrder() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(15);
+        list.insertAtStart(5);
+        list.insertAtStart(0);
+        String actual = list.printList();
+        String expected = "LinkedList : 0 5 10 15 ";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintingOrderAfterInsertEnd() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(15);
+        list.insertAtEnd(20);
+        list.insertAtEnd(25);
+        String actual = list.printList();
+        String expected = "LinkedList : 10 15 20 25 ";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintingOrderAfterInsertAtStart() {
+        LinkedList list = new LinkedList();
+        list.insertAtStart(10);
+        list.insertAtStart(15);
+        list.insertAtStart(20);
+        list.insertAtStart(25);
+        String actual = list.printList();
+        String expected = "LinkedList : 25 20 15 10 ";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintingOrderAfterInsertAtStartThenDelete() {
+        LinkedList list = new LinkedList();
+        list.insertAtStart(10);
+        list.DeleteAt(0);
+        list.insertAtStart(15);
+        list.insertAtStart(20);
+        list.insertAtStart(25);
+        list.DeleteAt(2);
+        String actual = list.printList();
+        System.out.println(actual);
+        String expected = "LinkedList : 25 20 ";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintingOrderAfterInsertAtEndThenDelete() {
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(10);
+        list.DeleteAt(0);
+        list.insertAtEnd(15);
+        list.insertAtEnd(20);
+        list.insertAtEnd(25);
+        list.DeleteAt(2);
+        String actual = list.printList();
+        System.out.println(actual);
+        String expected = "LinkedList : 15 20 ";
+        assertEquals(expected, actual);
+    }
 
 
 }
