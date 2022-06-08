@@ -16,7 +16,7 @@ public class LinkedList {
      *
      * @return boolean
      */
-    public boolean IsEmpty() {
+    public boolean isEmpty() {
         return count == 0;
     }
 
@@ -103,7 +103,7 @@ public class LinkedList {
      *
      * @param index
      */
-    public void DeleteAt(int index) {
+    public void deleteAt(int index) {
         if (index == 0) {
             head = head.next;
         }

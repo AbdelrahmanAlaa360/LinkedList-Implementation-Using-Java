@@ -1,32 +1,32 @@
 package com.company;
 
-public class QueueAsArray {
+public class queueAsArray {
     Object[] ArrayQueue;
     int rear;   // last added item
     int front;  // first added item
     final int size = 5;
     int items[] = new int[size];
 
-    public QueueAsArray() {
+    public queueAsArray() {
         front = -1;
         rear = -1;
     }
 
     /**
-     * This method is use to check if element is full or not
+     * This method is used to check if element is full or not
      *
      * @return boolean
      */
-    public boolean Isfull() {
+    public boolean isFull() {
         return (rear == size - 1 && front == 0);
     }
 
     /**
      * This method is used to check if element is empty or not
      *
-     * @return
+     * @return boolean
      */
-    public boolean IsEmpty() {
+    public boolean isEmpty() {
         return (front == -1);
     }
 
@@ -37,7 +37,7 @@ public class QueueAsArray {
      * @param newItem
      */
     public void Enqueue(int newItem) {
-        if (Isfull()) {
+        if (isFull()) {
             //throw new ArrayStoreException("Array is Full");
             System.out.println("Array is Full");
         } else {
@@ -53,11 +53,10 @@ public class QueueAsArray {
      */
     public int Dequeue() {
         int item;
-        if (IsEmpty()) {
+        if (isEmpty()) {
             System.out.println("Queue is Empty .");
             return -1;
-        }
-        else {
+        } else {
             item = items[front];
             if (front >= rear) {
                 front = -1;

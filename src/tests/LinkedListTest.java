@@ -4,8 +4,6 @@ import com.company.LinkedList;
 import com.company.Node;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-
 import static org.junit.Assert.*;
 //import static org.junit.jupiter.api.Assertions.*;
 //import org.junit.jupiter.api.Test;
@@ -14,7 +12,7 @@ public class LinkedListTest {
     @Test
     public void testIsEmpty() {
         LinkedList list = new LinkedList();
-        boolean actual = list.IsEmpty();
+        boolean actual = list.isEmpty();
         assertTrue(actual);
     }
 
@@ -22,7 +20,7 @@ public class LinkedListTest {
     public void testIsEmptyAfterInsert() {
         LinkedList list = new LinkedList();
         list.insertAtEnd(0);
-        boolean actual = list.IsEmpty();
+        boolean actual = list.isEmpty();
         assertFalse(actual);
     }
 
@@ -30,7 +28,7 @@ public class LinkedListTest {
     public void testIsEmptyAfterInsertAt() {
         LinkedList list = new LinkedList();
         list.insertAtNthPosition(0, 5);
-        boolean actual = list.IsEmpty();
+        boolean actual = list.isEmpty();
         assertFalse(actual);
     }
 
@@ -38,7 +36,7 @@ public class LinkedListTest {
     public void testIsEmptyAfterInsertAtStart() {
         LinkedList list = new LinkedList();
         list.insertAtStart(5);
-        boolean actual = list.IsEmpty();
+        boolean actual = list.isEmpty();
         assertFalse(actual);
     }
 
@@ -56,7 +54,7 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(0);
+        list.deleteAt(0);
         int actualSize = list.getSize();
         assertEquals(1, actualSize);
     }
@@ -74,7 +72,7 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtStart(5);
         list.insertAtStart(4);
-        list.DeleteAt(1);
+        list.deleteAt(1);
         int actual = list.getSize();
         int expectedSize = 1;
         assertEquals(expectedSize, actual);
@@ -127,8 +125,8 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(0);
-        list.DeleteAt(0);
+        list.deleteAt(0);
+        list.deleteAt(0);
         int actualSize = list.getSize();
         assertEquals(0, actualSize);
     }
@@ -140,8 +138,8 @@ public class LinkedListTest {
         list.insertAtEnd(10);
         list.insertAtEnd(15);
         list.insertAtEnd(20);
-        list.DeleteAt(2);
-        list.DeleteAt(0);
+        list.deleteAt(2);
+        list.deleteAt(0);
         int actualSize = list.getSize();
         assertEquals(2, actualSize);
     }
@@ -153,8 +151,8 @@ public class LinkedListTest {
         list.insertAtEnd(10);
         list.insertAtEnd(15);
         list.insertAtEnd(20);
-        list.DeleteAt(10);
-        list.DeleteAt(8);
+        list.deleteAt(10);
+        list.deleteAt(8);
         int actualSize = list.getSize();
         int expected = 4;
         assertEquals(expected, actualSize);
@@ -165,9 +163,9 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(0);
-        list.DeleteAt(0);
-        boolean actual = list.IsEmpty();
+        list.deleteAt(0);
+        list.deleteAt(0);
+        boolean actual = list.isEmpty();
         assertTrue(actual);
     }
 
@@ -176,8 +174,8 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(1);
-        boolean actual = list.IsEmpty();
+        list.deleteAt(1);
+        boolean actual = list.isEmpty();
         assertFalse(actual);
     }
 
@@ -186,9 +184,9 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(10);
-        list.DeleteAt(10);
-        boolean actual = list.IsEmpty();
+        list.deleteAt(10);
+        list.deleteAt(10);
+        boolean actual = list.isEmpty();
         assertFalse(actual);
     }
 
@@ -197,8 +195,8 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAtEnd(5);
         list.insertAtEnd(10);
-        list.DeleteAt(10);
-        list.DeleteAt(10);
+        list.deleteAt(10);
+        list.deleteAt(10);
         int actual = list.getSize();
         int expected = 2;
         assertEquals(expected, actual);
@@ -251,8 +249,8 @@ public class LinkedListTest {
         list.insertAtEnd(10);
         list.insertAtEnd(20);
         list.insertAtEnd(30);
-        list.DeleteAt(1);
-        list.DeleteAt(0);
+        list.deleteAt(1);
+        list.deleteAt(0);
         Node curr = list.head;
         int[] expectedResult = new int[]{30};
         for (int i = 0; i < list.getSize(); i++) {
@@ -320,11 +318,11 @@ public class LinkedListTest {
     public void testPrintingOrderAfterInsertAtStartThenDelete() {
         LinkedList list = new LinkedList();
         list.insertAtStart(10);
-        list.DeleteAt(0);
+        list.deleteAt(0);
         list.insertAtStart(15);
         list.insertAtStart(20);
         list.insertAtStart(25);
-        list.DeleteAt(2);
+        list.deleteAt(2);
         String actual = list.printList();
         System.out.println(actual);
         String expected = "LinkedList : 25 20 ";
@@ -335,11 +333,11 @@ public class LinkedListTest {
     public void testPrintingOrderAfterInsertAtEndThenDelete() {
         LinkedList list = new LinkedList();
         list.insertAtEnd(10);
-        list.DeleteAt(0);
+        list.deleteAt(0);
         list.insertAtEnd(15);
         list.insertAtEnd(20);
         list.insertAtEnd(25);
-        list.DeleteAt(2);
+        list.deleteAt(2);
         String actual = list.printList();
         System.out.println(actual);
         String expected = "LinkedList : 15 20 ";

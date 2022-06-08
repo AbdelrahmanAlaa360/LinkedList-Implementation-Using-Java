@@ -19,6 +19,7 @@ public class QueueAsLinkedList {
 
     /**
      * This method removes an element from the front of the queue
+     * @return integer
      */
     public int Deque() {
         if(queueList.getSize() == 0){
@@ -26,7 +27,7 @@ public class QueueAsLinkedList {
             return 0;
         }
         int data = queueList.getElement(queueList.getSize() - 1);
-        queueList.DeleteAt(queueList.getSize() - 1);
+        queueList.deleteAt(queueList.getSize() - 1);
         return data;
     }
 
@@ -36,7 +37,7 @@ public class QueueAsLinkedList {
      * @return boolean
      */
     public boolean isEmpty() {
-        return queueList.IsEmpty();
+        return queueList.isEmpty();
     }
 
     /**
