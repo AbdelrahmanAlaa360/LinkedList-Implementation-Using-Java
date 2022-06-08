@@ -261,4 +261,84 @@ public class QueueAsLinkedListTest {
         assertEquals(0, actual);
     }
 
+    @Test
+    public void testSize() {
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        assertEquals(0, queue.getSize());
+        queue.Enqueue(5);
+        assertEquals(1, queue.getSize());
+        queue.Enqueue(10);
+        assertEquals(2, queue.getSize());
+        queue.Enqueue(15);
+        assertEquals(3, queue.getSize());
+    }
+
+    @Test
+    public void TestsingleItem() {
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        queue.Enqueue(5);
+        assertEquals(5, queue.peek());
+        assertEquals(1, queue.getSize());
+        assertFalse(queue.isEmpty());
+    }
+
+    @Test
+    public void testIterator() {
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        int testSum = 0;
+        queue.Enqueue(5);
+        queue.Enqueue(15);
+        queue.Enqueue(20);
+        assertEquals(3, queue.getSize());
+        int n = queue.getSize();
+        for (int i=0; i< n; i++) {
+            testSum = testSum + queue.Deque();
+        }
+        assertEquals(40, testSum);
+    }
+
+    @Test
+    public void testPeekInEmptyQueue(){
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        assertTrue(queue.isEmpty());
+        assertEquals(0,queue.getSize());
+    }
+
+    @Test
+    public void testPeek(){
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        assertTrue(queue.isEmpty());
+        queue.Enqueue(5);
+        queue.Enqueue(15);
+        assertEquals(5 ,queue.peek());
+    }
+
+    @Test
+    public void testSizeInEmptyAndFullQueue(){
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        assertTrue(queue.isEmpty());
+        assertEquals(0, queue.getSize());
+        queue.Enqueue(5);
+        assertFalse(queue.isEmpty());
+        assertEquals(1, queue.getSize());
+    }
+
+
+    @Test
+    public void test1000InThen1000Out() {
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        for (int i = 0; i < 1000; i++) {
+            queue.Enqueue(i);
+        }
+        for (int i = 0; i < 1000; i++) {
+            assertEquals(((Integer) queue.Deque()).intValue(), i);
+        }
+    }
+
+    @Test
+    public void testEnqueuenegativenumberInEmptyQueue() {
+        QueueAsLinkedList queue = new QueueAsLinkedList();
+        queue.Enqueue(-5);
+    }
+
 }
